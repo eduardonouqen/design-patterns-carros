@@ -1,17 +1,19 @@
 package br.com.app.garagem.domain.venda;
 
-import br.com.app.garagem.domain.produto.Veiculo;
+import java.math.BigDecimal;
 
-import java.util.List;
+public class Cliente extends Pessoa implements Orcamento {
 
-public class Cliente extends Pessoa {
+    private BigDecimal salario;
 
-    public Cliente(String nome) {
+    public Cliente(String nome, BigDecimal salario) {
         super(nome);
+        this.salario = salario;
     }
 
-    public void selecionarVeiculo(List<Veiculo> veiculos) {
-
+    @Override
+    public BigDecimal getOrcamento() {
+        return salario.multiply(new BigDecimal("10"));
     }
 
 }
